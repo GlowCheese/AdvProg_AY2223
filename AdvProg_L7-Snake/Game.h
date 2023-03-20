@@ -40,11 +40,12 @@ public:
     void nextStep();
     const std::vector< std::vector<CellType> >& getSquares() const { return squares; }
     CellType getCellType(Position p) const;
-    void setGameStatus(GameStatus status);
+    void setGameStatus(GameStatus status) { this->status = status; }
 
     std::vector<Position> getSnakePositions() const;
     Position getCherryPosition() const { return cherryPosition; }
     Direction getCurrentDirection() const { return currentDirection; }
+    void setCherryPosition(Position p) { cherryPosition = p; }
     int getScore() const { return score; }
     bool canChange(Direction current, Direction next) const;    
     
@@ -60,7 +61,6 @@ public:
     void setCellType(Position pos, CellType cellType);
     Snake getSnake();
 	void addCherry();  
-	
 };
 
 #endif // GAMEGROUND_H
