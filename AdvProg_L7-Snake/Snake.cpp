@@ -25,14 +25,14 @@ vector<Position> Snake::getPositions() const
 
 void Snake::growAtFront(Position newPosition)
 {
-    head->next = newPosition;
+    head->next = new SnakeNode(newPosition);
     head = head->next;
 }
 
 void Snake::slideTo(Position newPosition) {
 	if (tail->next == nullptr) { 
-        tail->next = position;
-        head->next = position;
+        tail->position = newPosition;
+        head->position = newPosition;
 	}
 	else {
 		SnakeNode *oldTailNode = tail;
@@ -40,7 +40,7 @@ void Snake::slideTo(Position newPosition) {
         tail = tail->next;
 		oldTailNode->next = nullptr;
 
-        oldTailNode.position = newPosition;
+        oldTailNode->position = newPosition;
         head = head->next = oldTailNode;
 	}
 }
